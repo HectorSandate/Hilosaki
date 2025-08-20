@@ -75,10 +75,10 @@ export function Header() {
                     variant="secondary"
                     size={window.innerWidth < 640 ? "sm" : "sm"}
                     onClick={() => window.location.pathname = '/admin'}
-                    className="hidden sm:flex items-center space-x-2"
+                    className="flex items-center space-x-1 sm:space-x-2"
                   >
-                    <Settings size={18} />
-                    <span>Admin</span>
+                    <Settings size={16} className="sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">Admin</span>
                   </Button>
                 )}
 
