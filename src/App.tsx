@@ -180,7 +180,7 @@ function HomePage() {
               Experiencias personalizadas para tu bienestar
             </p>
             <a 
-              href="/servicios"
+              onClick={() => window.location.pathname = '/servicios'}
               className="inline-block px-8 py-3 border border-black text-black font-medium tracking-wide hover:bg-black hover:text-white transition-colors"
             >
               VER TODOS LOS SERVICIOS

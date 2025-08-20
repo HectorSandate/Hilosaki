@@ -35,7 +35,7 @@ export function Header() {
           {/* Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <motion.a
-              href="/"
+              onClick={() => window.location.pathname = '/'}
               className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors font-medium"
               whileHover={{ scale: 1.05 }}
             >
@@ -43,7 +43,7 @@ export function Header() {
               <span>Inicio</span>
             </motion.a>
             <motion.a
-              href="/servicios"
+              onClick={() => window.location.pathname = '/servicios'}
               className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors font-medium"
               whileHover={{ scale: 1.05 }}
             >
@@ -74,7 +74,7 @@ export function Header() {
                   <Button
                     variant="secondary"
                     size={window.innerWidth < 640 ? "sm" : "sm"}
-                    onClick={() => window.location.href = '/admin'}
+                    onClick={() => window.location.pathname = '/admin'}
                     className="hidden sm:flex items-center space-x-2"
                   >
                     <Settings size={18} />
