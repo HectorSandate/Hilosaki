@@ -34,13 +34,7 @@ function App() {
             <Route path="/servicios" element={<ServicesPage />} />
             <Route 
               path="/admin" 
-              element={
-                profile?.role === 'admin' ? (
-                  <AdminDashboard />
-                ) : (
-                  <Navigate to="/" replace />
-                )
-              } 
+              element={<AdminDashboard />}
             />
             <Route path="/auth" element={<AuthForm />} />
             <Route path="/create-admin" element={<CreateAdminForm />} />
