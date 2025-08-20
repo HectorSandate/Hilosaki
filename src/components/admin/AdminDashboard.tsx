@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Package, Users, ShoppingCart, TrendingUp, Plus, Tag, Shield } from 'lucide-react'
+import { useAuth } from '../../hooks/useAuth'
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
 import { ProductManager } from './ProductManager'
@@ -11,6 +12,35 @@ import { CreateAdminForm } from './CreateAdminForm'
 
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'orders' | 'categories' | 'admin'>('overview')
+  const { profile, loading } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto mb-4"></div>
+          <p className="text-pink-600 font-medium">Cargando...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (profile?.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Acceso Denegado</h1>
+          <p className="text-gray-600 mb-6">No tienes permisos para acceder a esta página.</p>
+          <button
+            onClick={() => window.location.href = '/'}
+            className="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+          >
+            Volver al Inicio
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   const tabs = [
     { id: 'overview', label: 'Resumen', icon: TrendingUp },
